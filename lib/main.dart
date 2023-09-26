@@ -31,25 +31,43 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+enum Hand {
+  rock,
+  scissors,
+  paper;
+
+  String get text {
+    switch (this) {
+      case Hand.rock:
+        return '✊';
+      case Hand.scissors:
+        return '✌️';
+      case Hand.paper:
+        return '✋';
+    }
+  }
+}
 
 class _MyHomePageState extends State<MyHomePage> {
 
   String myJankenText = '✌️';
   String computerJankenText = '✌️';
+  List<Hand> jankenList = [Hand.rock, Hand.scissors, Hand.paper];
+
 
   // void _chooseJankenText() {
   //   setState(() {
   //     myJankenText = '✋';
   //   });
   // }
-  List<String> jankenList = ['✌️', '👊', '✋'];
+ // List<String> jankenList = ['✌️', '👊', '✋'];
 
   void chooseComputerText() {
     final random = Random();
     final randomNumber = random.nextInt(3);
-    final hand = jankenList[randomNumber];
+    final hand = Hand.values[randomNumber];
     setState(() {
-      computerJankenText = hand;
+      computerJankenText = hand.text;
     });
   }
 
@@ -70,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(fontSize: 30),
             ),
             Text(
-           
+
               computerJankenText,
               style: TextStyle(fontSize: 100),
             ),
