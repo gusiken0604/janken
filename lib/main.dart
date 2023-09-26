@@ -50,7 +50,7 @@ enum Hand {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  String myJankenText = '✌️';
+  String myJankenText = Hand.rock.text;
   String computerJankenText = '✌️';
   List<Hand> jankenList = [Hand.rock, Hand.scissors, Hand.paper];
 
